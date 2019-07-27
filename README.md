@@ -21,16 +21,17 @@ This is a starter kit with the following characteristics:
     npx express-generator --no-view --git
     ```
 
-2. We added Jest testing library:
-
-    ```
-    npm install --save-dev jest
-    ```
-
-3. Add other dependencies:
+2. Add dependencies:
 
     ```
     npm install --save passport passport-local sequelize pg pg-hstore
+    ```
+
+3. Add dev dependencies:
+
+    ```
+    npm install --save-dev jest
+    npm install --save-dev --save-exact prettier
     ```
 
 4. Prepare the files needed to use the libraries.
