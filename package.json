@@ -2,11 +2,12 @@
   "name": "nodejs-backend-starterkit",
   "version": "0.0.0",
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "NODE_ENV=production node ./bin/www",
+    "dev": "NODE_ENV=development PORT=3001 DEBUG=app:* nodemon --ignore '*.test.js' --watch src bin/www",
     "test": "jest",
     "test:watch": "jest --watch",
-    "jsfmt": "eslint \"./**/*.js\" --fix",
-    "jslint": "eslint \"./**/*.js\""
+    "jsfmt": "eslint \"src/**/*.js\" --fix",
+    "jslint": "eslint \"src/**/*.js\""
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,7 @@
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
-    "jest": "^24.8.0"
+    "jest": "^24.8.0",
+    "nodemon": "^1.19.1"
   }
 }
