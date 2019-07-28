@@ -5,7 +5,8 @@
     "start": "node ./bin/www",
     "test": "jest",
     "test:watch": "jest --watch",
-    "lint": "prettier --single-quote es5 --no-semi --write './**/*.js'"
+    "jsfmt": "eslint \"./**/*.js\" --fix",
+    "jslint": "eslint \"./**/*.js\""
   },
   "repository": {
     "type": "git",
@@ -29,7 +30,13 @@
     "sequelize": "^5.11.0"
   },
   "devDependencies": {
-    "jest": "^24.8.0",
-    "prettier": "1.18.2"
+    "eslint": "^6.1.0",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.14.0",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "jest": "^24.8.0"
   }
 }
