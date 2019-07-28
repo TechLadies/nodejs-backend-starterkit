@@ -81,7 +81,21 @@ This is a starter kit with the following characteristics:
 	debug('Hello World!')
 	```
 
-6. Add other dependencies:
+6. Add [DotEnv](https://github.com/motdotla/dotenv) for injecting environment variables through a `.env` file.
+
+	```
+	npm install --save dotenv
+	```
+
+	Copy the `env.sample` file to `.env` and update the variables in `.env`:
+
+	```
+	cp env.sample .env
+	```
+
+	You will then be able to view the env variables via `process.env.VAR_NAME`. As a convention, environment variables are all caps and underscore case.
+
+7. Add other dependencies:
 
     ```bash
     npm install --save passport passport-local sequelize pg pg-hstore
