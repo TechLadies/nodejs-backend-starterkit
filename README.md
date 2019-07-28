@@ -24,7 +24,21 @@ This is a starter kit with the following characteristics:
 
     Move the generated files into an `src` folder.
 
-2. Prepare the JavaScript linter
+2. Add CORS middleware
+
+	```bash
+	npm install --save cors
+	```
+
+	Add these lines to 'app.js'
+
+	```javascript
+	const cors = require('cors')
+
+	app.use(cors())
+	```
+
+3. Prepare the JavaScript linter
 
 	We installed [ESLint](https://eslint.org) with the [StandardJS](https://github.com/standard/eslint-config-standard) coding style.
 
@@ -47,8 +61,7 @@ This is a starter kit with the following characteristics:
 	}
 	```
 
-
-3. Add the [Jest](https://jestjs.io) testing framework:
+4. Add the [Jest](https://jestjs.io) testing framework:
 
     ```bash
     npm install --save-dev jest eslint-plugin-jest
@@ -56,7 +69,7 @@ This is a starter kit with the following characteristics:
 
     Add the ESLint configurations into `.eslintrc.js` (refer to <https://github.com/jest-community/eslint-plugin-jest#readme>)
 
-4. Add nodemon for dev server
+5. Add nodemon for dev server
 
 	```bash
 	npm install --save-dev nodemon
@@ -71,7 +84,7 @@ This is a starter kit with the following characteristics:
 	}
 	```
 
-5. Debugging
+6. Debugging
 
 	Use [Debug](https://github.com/visionmedia/debug) to add your debugging messages to the terminal.
 
@@ -81,7 +94,7 @@ This is a starter kit with the following characteristics:
 	debug('Hello World!')
 	```
 
-6. Add [DotEnv](https://github.com/motdotla/dotenv) for injecting environment variables through a `.env` file.
+7. Add [DotEnv](https://github.com/motdotla/dotenv) for injecting environment variables through a `.env` file.
 
 	```
 	npm install --save dotenv
@@ -95,7 +108,7 @@ This is a starter kit with the following characteristics:
 
 	You will then be able to view the env variables via `process.env.VAR_NAME`. As a convention, environment variables are all caps and underscore case.
 
-7. Add other dependencies:
+8. Add other dependencies:
 
     ```bash
     npm install --save passport passport-local sequelize pg pg-hstore
