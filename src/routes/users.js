@@ -5,7 +5,13 @@ const debug = require('debug')('app:users')
 /* GET users listing. */
 router.get('/', function (req, res, next) {
   debug('Hello World!')
-  res.send('respond with a resource now!')
+
+  const users = [
+    { name: 'Elisha', gender: 'FEMALE' },
+    { name: 'Michael', gender: 'MALE' }
+  ]
+
+  res.json(users)
 })
 
 module.exports = router
