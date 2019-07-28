@@ -11,7 +11,7 @@ router.get('/', function (req, res, next) {
     attributes: ['firstName', 'lastName', 'email']
   }).then(users => {
     res.json(users)
-  });
+  })
 })
 
 module.exports = router
