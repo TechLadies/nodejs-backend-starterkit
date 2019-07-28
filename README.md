@@ -101,3 +101,52 @@ This is a starter kit with the following characteristics:
     npm install --save passport passport-local sequelize pg pg-hstore
     ```
 
+## Managing Postgres Database
+
+We are using [Postgres](https://www.postgresql.org/) as the database for this app.
+
+### GUI tools
+
+#### For MacOS
+
+- [Postgres.App](https://postgresapp.com/) - The easiest way to get started with PostgreSQL on the Mac
+- [Postico](https://eggerapps.at/postico/) - A Modern PostgreSQL Client for the Mac
+
+#### For Windows
+
+- [Postgres](https://www.postgresql.org/download/windows/) - Official installer for Postgres on Windows
+- [pgAdmin](https://www.pgadmin.org/) - pgAdmin is the most popular and feature rich Open Source administration and development platform for PostgreSQL
+
+### ORM
+
+We are using [Sequelize](https://sequelize.org/) as our database ORM (Object Relational Mapping) library. You can use the CLI tool to run database migrations and to generate the models.
+
+#### Create Databases
+
+```
+NODE_ENV=development ./node_modules/.bin/sequelize db:create
+NODE_ENV=test ./node_modules/.bin/sequelize db:create
+```
+
+#### Migration
+
+```
+NODE_ENV=development ./node_modules/.bin/sequelize db:migrate
+NODE_ENV=test ./node_modules/.bin/sequelize db:migrate
+```
+
+#### How we created the User model
+
+```
+./node_modules/.bin/sequelize model:generate --name User --attributes firstName:string,lastName:string,email:string,passwordHash:string
+```
+
+#### Seeding Database
+
+```
+./node_modules/.bin/sequelize db:seed:all
+```
+
+#### More info
+
+Checkout the Sequelize v5 documentation for more info: <https://sequelize.org/master/>
