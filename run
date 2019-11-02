@@ -10,6 +10,4 @@ export NODE_ENV=development
 
 set +e && npm run db:create 2> /dev/null && set -e 2> /dev/null
 npm run db:migrate
-set +e && npm run db:seed 2> /dev/null && set -e 2> /dev/null
-
 npm run dev
