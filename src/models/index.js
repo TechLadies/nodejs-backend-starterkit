@@ -10,7 +10,7 @@ const basename = path.basename(__filename)
 const db = {}
 
 // Initialise Knex
-const knex = Knex(knexConfig.development)
+const knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
 db.knex = knex
 
 Model.knex(knex)
