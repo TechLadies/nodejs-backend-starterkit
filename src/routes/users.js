@@ -4,14 +4,11 @@ const debug = require('debug')('app:users')
 const db = require('../models/index')
 
 /* GET users listing. */
-router.get('/', function (req, res, next) {
+router.get('/', async (req, res) => {
   debug('Hello World!')
 
-  db.User.findAll({
-    attributes: ['firstName', 'lastName', 'email']
-  }).then(users => {
-    res.json(users)
-  })
+  const users = await db.User.query().select('email', 'firstName', 'lastName')
+  res.json(users)
 })
 
 module.exports = router

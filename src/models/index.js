@@ -2,36 +2,39 @@
 
 const fs = require('fs')
 const path = require('path')
-const Sequelize = require('sequelize')
+const Knex = require('knex')
+const knexConfig = require('../../knexfile')
+const { Model } = require('objection')
+
 const basename = path.basename(__filename)
-const env = process.env.NODE_ENV || 'development'
-const config = require(path.join(__dirname, '/../../db/config.js'))[env]
 const db = {}
 
-let sequelize
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config)
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config)
-}
+// Initialise Knex
+const knex = Knex(knexConfig.development)
+db.knex = knex
 
-fs
-  .readdirSync(__dirname)
-  .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js')
-  })
-  .forEach(file => {
-    const model = sequelize['import'](path.join(__dirname, file))
-    db[model.name] = model
-  })
+Model.knex(knex)
 
-Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db)
-  }
+// Make models accessible on the single "db" export
+fs.readdirSync(__dirname).filter((file) => {
+  return (
+    !_isDotFile(file) && !_isCurrentFile(file) && _fileHasExtension(file, '.js')
+  )
+}).forEach(file => {
+  const model = require(path.join(__dirname, file)).model
+  db[model.name] = model
 })
 
-db.sequelize = sequelize
-db.Sequelize = Sequelize
-
 module.exports = db
+
+// Helpers
+function _isDotFile (fileName) {
+  return fileName.indexOf('.') === 0
+}
+function _isCurrentFile (fileName) {
+  return fileName === basename
+}
+function _fileHasExtension (fileName, ext) {
+  if (!ext.startsWith('.')) ext = `.${ext}`
+  return fileName.slice(-ext.length) === ext
+}
