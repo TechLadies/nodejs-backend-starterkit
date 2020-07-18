@@ -2,7 +2,7 @@
 
 ## Post-Forking Steps
 
-1. Update `db/config.json` with the correct database names for Development and Test databases.
+1. Update `knexfile.js` with the correct database names for Development and Test databases.
 
 ## Initial setup steps for local development
 
@@ -10,9 +10,7 @@
 3. Prepare the databases
 
 	```
-	NODE_ENV=development npm run db:create
 	NODE_ENV=development npm run db:migrate
-	NODE_ENV=test npm run db:create
 	NODE_ENV=test npm run db:migrate
 	```
 
@@ -22,7 +20,13 @@
 	NODE_ENV=development npm run db:seed
 	```
 
-5. You can update the content of `public/index.html`
+5. Start the app for local development
+
+	```
+	npm run dev
+	```
+
+6. Visit `http://localhost:3001/users` to view the seeded user data (not all fields are shown).
 
 ## Windows Users
 
